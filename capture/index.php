@@ -157,24 +157,24 @@ $lastRateLimitHit = getLastRateLimitHit();
                 }
             }
         }
-        $tests = upgrades(true);
-        if ($tests['suggested'] || $tests['required']) {
-            if (!$showupdatemsg) {
-                print '<div id="updatewarning">';
-            } else {
-                print '<br/>';
-            }
-            $wikilink = 'https://github.com/digitalmethodsinitiative/dmi-tcat/wiki/Upgrading-TCAT#upgrading-database-tables';
-            if ($tests['required']) {
-                    print "Your database is out-of-date and needs to be upgraded to fix bugs. Follow the <a href='$wikilink' target='_blank'>documentation</a> and run the command-line script common/upgrade.php from your shell.<br/>";
-            } else {
-                    print "Your database must be updated before some new TCAT features can be used. Follow the <a href='$wikilink' target='_blank'>documentation</a> and run the command-line script common/upgrade.php from your shell.<br/>";
-            }
-            $showupdatemsg = true;
-        }
-        if ($showupdatemsg) {
-            print "</div>";
-        }
+        //$tests = upgrades(true);
+        //if ($tests['suggested'] || $tests['required']) {
+        //    if (!$showupdatemsg) {
+        //        print '<div id="updatewarning">';
+        //    } else {
+        //        print '<br/>';
+        //    }
+        //    $wikilink = 'https://github.com/digitalmethodsinitiative/dmi-tcat/wiki/Upgrading-TCAT#upgrading-database-tables';
+        //    if ($tests['required']) {
+        //            print "Your database is out-of-date and needs to be upgraded to fix bugs. Follow the <a href='$wikilink' target='_blank'>documentation</a> and run the command-line script common/upgrade.php from your shell.<br/>";
+        //    } else {
+        //            print "Your database must be updated before some new TCAT features can be used. Follow the <a href='$wikilink' target='_blank'>documentation</a> and run the command-line script common/upgrade.php from your shell.<br/>";
+        //    }
+        //    $showupdatemsg = true;
+        //}
+        //if ($showupdatemsg) {
+        //    print "</div>";
+        //}
         ?>
         <h3>New query bin</h3>
         <table>
