@@ -21,6 +21,11 @@ if (dbserver_has_utf8mb4_support() == false) {
     exit();
 }
 
+if (defined(MAX_DISK_USAGE) && (get_disk_usage() > MAX_DISK_USAGE)) {
+    logit("controller.log", "Database disk usage greater than " . MAX_DISK_USAGE . "%. Capture aborted.");
+    exit();
+}
+
 $dbh = pdo_connect();
 $roles = unserialize(CAPTUREROLES);
 

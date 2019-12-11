@@ -77,6 +77,9 @@ $lastRateLimitHit = getLastRateLimitHit();
                 background-color: #3399FF; 
             } 
 
+            #capture-warning {
+               color: red;
+            }
 
         </style>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
@@ -86,6 +89,7 @@ $lastRateLimitHit = getLastRateLimitHit();
     <body>
         <div id="if_fullpage">
         <h1 id="if_title">DMI-TCAT query manager</h1>
+
         <div id="if_links">
             <a href="https://github.com/digitalmethodsinitiative/dmi-tcat" target="_blank" class="if_toplinks">github</a>
             <a href="https://github.com/digitalmethodsinitiative/dmi-tcat/issues?state=open" target="_blank" class="if_toplinks">issues</a>
@@ -94,6 +98,18 @@ $lastRateLimitHit = getLastRateLimitHit();
         </div>
         <div style="clear:both;"></div>
         </div>
+
+        <?php if ($usage = get_disk_usage()): ?>
+            <?php if (defined('MAX_DISK_USAGE') && ($usage > MAX_DISK_USAGE)): ?>
+                <h2 id="capture-warning">
+                    Capture is disabled until disk usage is below <?php echo MAX_DISK_USAGE; ?>%. Currently <?php echo round($usage, 2); ?>%.
+                </h2>
+            <?php else: ?>
+                <div id="disk-usage">
+                    Current disk usage: <?php echo round($usage, 2); ?>%.
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
 
         <?php
         if (!dbserver_has_utf8mb4_support()) {

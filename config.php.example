@@ -220,5 +220,10 @@ define('REPOSITORY_URL', 'https://github.com/digitalmethodsinitiative/dmi-tcat.g
  * Enable producing a (huge) JSON dump with raw Tweet contents for debugging purposes.
  */
 define('ENABLE_JSON_DUMP', false);
+
+/*
+ * Set the maximum usage allowed in the database directory disk.
+ */
+define('MAX_DISK_USAGE', 95);
  
 ?>

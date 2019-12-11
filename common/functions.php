@@ -195,4 +195,25 @@ function create_tweet_cache() {
     return array($uniqid, $tweet_cache);
 }
 
+/**
+ * Fetch the usage of the database disk as a percentage.
+ *
+ * @return bool|float
+ */
+function get_disk_usage() {
+    $dbh = pdo_connect();
+    $sql = "SHOW VARIABLES WHERE Variable_Name = 'datadir'";
+    $rec = $dbh->prepare($sql);
+    if($rec->execute()) {
+        $result = $rec->fetch();
+        $datadir = $result["Value"];
+        $total = disk_total_space($datadir);
+        $avail = disk_free_space($datadir);
+        return (($total - $avail) / $total) * 100;
+    } else {
+        error_log("Unable to determine database directory for disk space check");
+        return false;
+    }
+}
+
 ?>
